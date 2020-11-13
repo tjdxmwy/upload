@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.css">
+    <script src="/webjars/jquery/jquery.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.js"></script>
+
+</head>
+<body>
+    <h1 th:inlines="text">文件上传</h1>
+
+    <form action="fileupload" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="fileName">Filename</label>
+            <input type="text" class="form-control" id="fileName" name="fileName" placeholder="文件名">
+        </div>
+        <div class="form-group">
+            <label for="filenameDesc">File describe</label>
+            <input type="text" class="form-control" id="filenameDesc" name="filenameDesc" placeholder="文件描述">
+        </div>
+        <div class="form-group">
+            <label for="uploadFile">File input</label>
+            <input type="file" id="uploadFile" name="files">
+        </div>
+
+        <button type="submit" class="btn btn-default">Save</button>
+    </form>
+</body>
+</html>

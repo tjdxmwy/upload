@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comac.fileuploadanddownload.dao.IFilePathDao">
+    <resultMap id="fileMap" type="fileInfo">
+        <id property="id" column="id"></id>
+        <result property="fileName" column="file_name"></result>
+        <result property="filenameDesc" column="filename_desc"></result>
+        <result property="fileRawName" column="file_raw_name"></result>
+        <result property="filePath" column="file_path"></result>
+    </resultMap>
+
+    <select id="findAll" resultMap="fileMap">
+        select * from file_info;
+    </select>
+
+    <insert id="savePath" parameterType="fileInfo">
+        insert into file_info(file_name, filename_desc, file_path, file_raw_name) values(#{fileName},#{filenameDesc}, #{filePath}, #{fileRawName})
+    </insert>
+</mapper>

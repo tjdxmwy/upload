@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>文件下载</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.css">
+    <script src="/webjars/jquery/jquery.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.js"></script>
+    <script>
+        $(function() {
+            $("#button").click(function () {
+                alert($("#filename").text());
+            });
+        })
+    </script>
+</head>
+<body>
+    <h2>文件下载</h2>
+    <table class="table table-striped">
+        <tr>
+            <th>序号</th>
+            <th>文件名</th>
+            <th>文件信息描述</th>
+            <th>源文件</th>
+            <th>操作</th>
+        </tr>
+
+        <div th:each="item,itemstatu:${files}">
+            <tr>
+                <td th:text="${itemstatu.count}"></td>
+                <td th:text="${{item.getFileName()}}"></td>
+                <td th:text="${{item.getFilenameDesc()}}"></td>
+                <td><a th:href="@{'download?filename=' + ${item.getFileRawName()} + '&filepath=' + ${item.getFilePath()}}" th:text="${{item.getFileRawName()}}"></a></td>
+                <td><a th:href="@{'download?filename=' + ${item.getFileRawName()} + '&filepath=' + ${item.getFilePath()}}">下载</a></td>
+            </tr>
+        </div>
+    </table>
+
+
+
+</body>
+</html>
